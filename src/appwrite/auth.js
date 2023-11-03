@@ -1,5 +1,5 @@
-import { Account, Client, ID } from "appwrite";
-import conf from "../conf.js";
+import conf from "../conf/conf.js";
+import { Client, Account, ID } from "appwrite";
 
 export class AuthService {
   client = new Client();
@@ -40,10 +40,12 @@ export class AuthService {
     try {
       return await this.account.get();
     } catch (error) {
-      console.log("Apprite error", error);
+      console.log("Appwrite serive :: getCurrentUser :: error", error);
     }
+
     return null;
   }
+
   async logout() {
     try {
       await this.account.deleteSessions();
